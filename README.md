@@ -14,6 +14,7 @@ EMPTY
 处理坐标失败: EMPTY，错误: 无效的坐标数据
 ```
 此时查看output.csv的数据行数，与源文件一致就没问题
+
 3. 然后将此文件导入到mysql中，对应polygon字段记得修改为longtext，其他的无所谓
 4. 然后执行sql: select id, pid, deep, name, st_geomfromtext(concat('Point(', geo,')')), st_geomfromtext(polygon) from demos.output; 
 你就能得到一个mysql geo格式的数据了，此时是insert into到另一张复制表还是直接去查询都由你
